@@ -1,0 +1,22 @@
+FLUX: an architecture that helps dealing with data (actions, dispatcher reducer, store)
+
+Redux is an open-source JavaScript library for managing application state. It is most commonly used with libraries such as React or Angular for building user interfaces.
+Similar to (and inspired by) Facebook's Flux architecture, it was created by Dan Abramov and Andrew Clark.
+
+Redux is a small library with a simple, limited API designed to be a predictable container for application state.
+It operates in a similar fashion to a reducing function, a functional programming concept.
+
+What is Flux?
+Flux is the application architecture that Facebook uses for building client-side web applications.
+
+What does it do?
+It complements React's composable view components by utilizing a unidirectional data flow.
+
+How do I use it?
+It's more of a pattern rather than a formal framework, and you can start using Flux immediately without a lot of new code.
+
+Action: an object that contains a type property and can also contain payload
+
+Provider: a wrapper component for the entire application;
+store: global state;
+dispatch: to send, fire an action
