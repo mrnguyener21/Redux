@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { increment, decrement, add, subtract, save } from './actions'
+import { increment, decrement, add, subtract, save, remove } from './actions'
 import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
     const counter = useSelector((state) => state.counter); // Select what do you want from the Store
+    const results = useSelector((state)=> state.results);
     const dispatch = useDispatch(); // Preparing to dispatch some actions
     const [number, setNumber] = useState(0);
 
     return (
         <div className="container">
-            <input placeholder='number' value={number} onChange={(event) => setNumber(event.target.value)} />
-            <button onClick={() => dispatch(subtract(number))}>Subtract {number}</button>
+            {/* <input placeholder='number' value={number} onChange={(event) => setNumber(event.target.value)} /> */}
+            {/* <button onClick={() => dispatch(subtract(number))}>Subtract {number}</button> */}
             <button onClick={() => dispatch(decrement())}>Decrement</button>
             <h1>{counter}</h1>
             <button onClick={() => dispatch(increment())}>Increment</button>
-            <button onClick={() => dispatch(add(number))}>Add {number}</button>
+            {/* <button onClick={() => dispatch(add(number))}>Add {number}</button> */}
             <button onClick={() => dispatch(save(counter))}>SAVE</button>
-
-            {/* 7 11 15 */}
+            <ul>
+                {results.map((result, i) => <li onClick={() => dispatch(remove(i))} key={i}>{result} - {i}</li>)}
+            </ul>
         </div>
     );
 }

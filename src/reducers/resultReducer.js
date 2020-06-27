@@ -9,8 +9,8 @@
         
 export default (state = [], action) => {
     switch (action.type) {
-        case 'SAVE': 'test'
-
+        case 'SAVE': return [...state, action.payload];
+        case 'REMOVE': return state.filter((_, i) => i !== action.payload);
         default: return state;
     }
 }
