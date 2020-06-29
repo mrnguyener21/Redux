@@ -2,24 +2,31 @@ import React, { useState } from 'react';
 import { increment, decrement, add, subtract, save, remove } from './actions'
 import { useDispatch, useSelector } from 'react-redux';
 
+import './App.css';
+
 const App = () => {
     const counter = useSelector((state) => state.counter); // Select what do you want from the Store
     const results = useSelector((state)=> state.results);
     const dispatch = useDispatch(); // Preparing to dispatch some actions
     const [number, setNumber] = useState(0);
-
+  
     return (
         <div className="container">
-            {/* <input placeholder='number' value={number} onChange={(event) => setNumber(event.target.value)} /> */}
-            {/* <button onClick={() => dispatch(subtract(number))}>Subtract {number}</button> */}
-            <button onClick={() => dispatch(decrement())}>Decrement</button>
-            <h1>{counter}</h1>
-            <button onClick={() => dispatch(increment())}>Increment</button>
-            {/* <button onClick={() => dispatch(add(number))}>Add {number}</button> */}
-            <button onClick={() => dispatch(save(counter))}>SAVE</button>
-            <ul>
-                {results.map((result, i) => <li onClick={() => dispatch(remove(i))} key={i}>{result} - {i}</li>)}
-            </ul>
+            <div className="inner-container">
+                <button className='red-button' onClick={() => dispatch(subtract(number))}>Subtract {number}</button>
+                <input className="counter" placeholder='number' value={number} onChange={(event) => setNumber(event.target.value)} />
+                <button className='green-button' onClick={() => dispatch(add(number))}>Add {number}</button>
+            </div>
+            <div className="inner-container">
+                <button className='red-button' onClick={() => dispatch(decrement())}>Decrement</button>
+                <h1 className="counter">{counter}</h1>
+                <button className='green-button' onClick={() => dispatch(increment())}>Increment</button>
+            </div>
+            
+            <button className='blue-button' onClick={() => dispatch(save(counter))}>SAVE</button>
+            <div style={{display: 'flex', marginTop: 10}}>
+                {results.map(({ value, id }) => <h1 style={{margin: '0 5px', cursor: "pointer"}} onClick={() => dispatch(remove(id))} key={id}>{value}</h1>)}
+            </div>
         </div>
     );
 }
