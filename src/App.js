@@ -21,9 +21,14 @@ const App = () => {
                 <button className='red-button' onClick={() => dispatch(decrement())}>Decrement</button>
                 <h1 className="counter">{counter}</h1>
                 <button className='green-button' onClick={() => dispatch(increment())}>Increment</button>
+                <button onClick={() => console.log('test')}>test</button>
             </div>
             
             <button className='blue-button' onClick={() => dispatch(save(counter))}>SAVE</button>
+            <button onClick={() => console.log(counter)}>check counter</button>
+            <button onClick={() => console.log(number)}>check number</button>
+            <button onClick={() => console.log(results)}>check result</button>
+            <button onClick={() => console.log(save())}>check save</button>
             <div style={{display: 'flex', marginTop: 10}}>
                 {results.map(({ value, id }) => <h1 style={{margin: '0 5px', cursor: "pointer"}} onClick={() => dispatch(remove(id))} key={id}>{value}</h1>)}
             </div>
